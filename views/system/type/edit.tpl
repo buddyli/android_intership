@@ -5,7 +5,7 @@
     <div class="box"> <!-- Box begins here -->
         <!--Standard form within a fieldset tag;-->
         <form method="post" action="/modify_type"><!-- Form -->
-            <fieldset><legend>编辑类型</legend>
+            <fieldset><legend>编辑菜单</legend>
                 <%
                     item = data['item'] if data and 'item' in data else None
                 %>
@@ -13,6 +13,11 @@
                 <div class="input_field">
                     <label for="b">名称</label>
                     <input class="mediumfield" name="name" type="text" value="${ item['name'] if 'name' in item else ''}" />
+                </div>
+
+                <div class="input_field">
+                    <label for="b">价格</label>
+                    <input class="mediumfield" name="price" type="text" value="${ item['price'] if 'price' in item else ''}" />
                 </div>
 
                 <input name="id" type="hidden" value="${ item['id'] if 'id' in item else ''}" />

@@ -10,4 +10,4 @@
 
 from mongoengine import *
 from documents import *
-connect('private2w', host='mongo.umessage.com.cn', port=27017)
+connect('android_intership', host='mongo.umessage.com.cn', port=27017)

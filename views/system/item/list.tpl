@@ -3,15 +3,16 @@
 <%block name="content">
 <div id="content"> <!-- Content begins here -->        
     <div class="box"> <!-- Box begins here -->
-        <h2>条目列表</h2>                           
+        <h2>餐馆列表</h2>                           
         <!--Classical Table below, must be used with thead and tbody tags;-->
         <table cellspacing="0" cellpadding="0"><!-- Table -->
             <thead>
                 <tr>
                     <th>名称</th>
-                    <th>索引</th>
+                    <th>地址</th>
+                    <th>电话</th>
                     <th>录入时间</th>
-                    <th>操作</th>
+                    <th colspan="2">操作</th>
                 </tr>
             </thead>
                 
@@ -21,15 +22,18 @@
                     <tr>
                         <td>${item['name'] if 'name' in item else '--'}</td>
                         <td>
-                            ${u'未索引' if item['indexed'] == '1' else u'已索引'}
+                            ${item['address'] if 'address' in item else '--'}
+                        </td>
+                        <td>
+                            ${item['telno'] if 'telno' in item else '--'}
                         </td>
                         <td>${item['addTimeStr'] if 'addTimeStr' in item else '--'}</td>
                         <td>
                             <a class="edit" href="/to_modify_item?id=${item.id}">修改</a>
                         </td>
-                        <!--<td>
+                        <td>
                             <a class="delete" href="/del_item?id=${item.id}" onclick="javascript:return confirm('Yes or No?')">删除</a>
-                        </td>-->
+                        </td>
                     </tr>
                     % endfor
                 %endif

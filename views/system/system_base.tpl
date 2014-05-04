@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><%block name="title">Website Name | Splash Manager</%block></title>
+    <title><%block name="title">餐馆管理系统</%block></title>
 
 <%block name="global_css">
     <!-- Loading CSS file -->

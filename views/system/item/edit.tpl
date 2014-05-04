@@ -5,7 +5,7 @@
     <div class="box"> <!-- Box begins here -->
         <!--Standard form within a fieldset tag;-->
         <form method="post" action="/modify_item"><!-- Form -->
-            <fieldset><legend>编辑条目</legend>
+            <fieldset><legend>编辑餐馆</legend>
                 <%
                     item = data['item'] if data and 'item' in data else None
                 %>
@@ -16,13 +16,13 @@
                 </div>
                 
                 <div class="input_field">
-                    <label for="b">索引</label>
-                    %if item.indexed == '0':
-                        <input type="checkbox" name="indexed" id="indexed" checked="checked">
-                    %else:
-                        <input type="checkbox" name="indexed" id="indexed">
-                    %endif
-                    <span class="field_desc"> Optional</span>
+                    <label for="b">地址</label>
+                    <input class="mediumfield" name="address" type="text" value="${ item['address'] if 'address' in item else ''}" />
+                </div>
+
+                <div class="input_field">
+                    <label for="b">电话</label>
+                    <input class="mediumfield" name="telno" type="text" value="${ item['telno'] if 'telno' in item else ''}" />
                 </div>
 
                 <input name="id" type="hidden" value="${ item['id'] if 'id' in item else ''}" />
