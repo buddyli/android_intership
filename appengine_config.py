@@ -1,6 +1,7 @@
 """This file is loaded when starting a new application instance."""
 import sys
 import os.path
+import json
 
 # add `lib` subdirectory to `sys.path`, so our `main` module can load
 # third-party libraries.
