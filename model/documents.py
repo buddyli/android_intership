@@ -7,14 +7,6 @@ from datetime import datetime
 
 DATE_FORMAT = '%Y-%m-%d %H:%M:%S' # 入库格式化时间
 
-# 菜品文档
-class Menu(Document):
-	id = ObjectIdField()
-	name = StringField(max_length=200, required=True)
-	price = StringField(max_length=50, required=True)
-	addTime = DateTimeField(default=datetime.now())
-	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))
-	# items = ListField(ReferenceField(Item)) # 一个类型可以关联多个条目
 	
 # 餐馆文档
 class Restaurant(Document):
@@ -24,14 +16,28 @@ class Restaurant(Document):
 	telno = StringField(max_length=50, required=False)
 	addTime = DateTimeField(default=datetime.now())
 	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))
-	menu = ListField(ReferenceField(Menu))
+	# menu = ListField(ReferenceField(Menu))
 
-# 内容文档。内容根据自己的类型，保存对应的条目值
-class Content(Document):
+# 菜品文档--一个菜品对应一个餐馆
+class Menu(Document):
 	id = ObjectIdField()
 	name = StringField(max_length=200, required=True)
-	# typeId = LongField(required=True)
+	price = StringField(max_length=50, required=True)
 	addTime = DateTimeField(default=datetime.now())
 	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))
-	indexed = StringField(max_length=1, required=True, default='1')
-	itemValue = StringField(max_length=500)
+	restaurant = ReferenceField(Restaurant)
+
+# 预约订单
+class Order(Document):
+	id = ObjectIdField()
+	mobile = StringField(max_length=11, required=True)# user's mobile
+	restaurant = ReferenceField(Restaurant)# user chioced restaurant
+	ordered = ListField(ReferenceField(Menu))
+	#用户下单的菜品,保存这个字段是为了防止订单中的菜品被删除，导致这里查看历史记录失效。
+	#为了提高响应速度，在审核预订订单时再更新orderedJson和cost两个字段
+	orderedJson = StringField(max_length=500, required=False)
+	cost = DecimalField(min_value=0, max_value=9999999999, precision=2, required=False, default=0)
+	# 0:init, 1:accept, 2:reject, 3:queue
+	status = IntField(required=False, default=0)
+	addTime = DateTimeField(default=datetime.now())
+	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))

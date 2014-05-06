@@ -38,11 +38,29 @@ def list_item():
 	}
 	return template('views/system/item/list', data = data, site_opt = site_opt)
 
+# process search restaurants requests come from clients
+@route('/search_restaurants')
+def search_restaurants():
+	lat = request.params.get('lat')
+	lon = request.params.get('lon')
+	pn = request.params.get('pn') or '1'
+	ps = request.params.get('ps') or '1000'
+
+	start = (int(pn) - 1) * int(ps) 
+	items = Restaurant.objects[start: start + int(ps)]
+	data = {
+		'items': items
+	}
+	return template('views/system/item/list', data = data, site_opt = site_opt)
+
 @route('/del_item')
 def del_item():
 	id = request.params.get('id')
-	# commit() # 需要手动提交删除
+
 	Restaurant.objects(id=id).delete()
+	# cascade delete menus of the restaurant
+	Menu.objects(restaurant=id).delete()
+
 	redirect('/list_item')
 
 @route('/modify_item', method = 'POST')

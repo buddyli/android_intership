@@ -19,7 +19,7 @@
 <div class="navhead"><span>订餐管理</span><span class="navbullet"></span></div>
 <div class="subnav">
     <ul class="submenu">
-        <li><a href="#" title="">预订列表</a></li>
+        <li><a href="/list_order" title="">预订列表</a></li>
     </ul>
 </div><!-- /Sidenav Box -->
 

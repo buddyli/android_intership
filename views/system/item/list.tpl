@@ -32,7 +32,7 @@
                             <a class="edit" href="/to_modify_item?id=${item.id}">修改</a>
                         </td>
                         <td>
-                            <a class="delete" href="/del_item?id=${item.id}" onclick="javascript:return confirm('Yes or No?')">删除</a>
+                            <a class="delete" href="/del_item?id=${item.id}" onclick="javascript:return confirm('删除餐馆会级联删除对应的菜单，是否继续？')">删除</a>
                         </td>
                     </tr>
                     % endfor
