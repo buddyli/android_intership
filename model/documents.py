@@ -16,6 +16,8 @@ class Restaurant(Document):
 	telno = StringField(max_length=50, required=False)
 	addTime = DateTimeField(default=datetime.now())
 	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))
+	lat = StringField(max_length=50, required=False)
+	lon = StringField(max_length=50, required=False)
 	# menu = ListField(ReferenceField(Menu))
 
 # 菜品文档--一个菜品对应一个餐馆
@@ -33,6 +35,8 @@ class Order(Document):
 	mobile = StringField(max_length=11, required=True)# user's mobile
 	restaurant = ReferenceField(Restaurant)# user chioced restaurant
 	ordered = ListField(ReferenceField(Menu))
+	orderDate = StringField(max_length=20, required=True)
+	orderTime = StringField(max_length=20, required=False, default='18:00')
 	#用户下单的菜品,保存这个字段是为了防止订单中的菜品被删除，导致这里查看历史记录失效。
 	#为了提高响应速度，在审核预订订单时再更新orderedJson和cost两个字段
 	orderedJson = StringField(max_length=500, required=False)

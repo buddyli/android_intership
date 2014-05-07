@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #-*- encoding:utf-8 -*-
-
+import json
 from bottle import route, mako_template as template, redirect, request, response, get, post
 from bottle import static_file, view #为了不经过controller直接返回诸如html，css等静态文件引入
 from model.documents import *
@@ -29,21 +29,6 @@ def list_item():
 	start = request.params.get('start') or '0'
 	size = request.params.get('size') or '1000'
 	types = Menu.objects[int(start):(int(start) + int(size))]
-
-	data = {
-		'types': types
-	}
-	return template('views/system/type/list', data = data, site_opt = site_opt)
-
-# process requests come from client to get menus
-@route('/update_menu')
-def update_menu():
-	pn = request.params.get('pn') or '1'
-	ps = request.params.get('ps') or '1000'
-	restaurant = request.params.get('id')
-
-	start = (int(pn) - 1) * int(ps) 
-	types = Menu.objects(restaurant=restaurant)[start: start + int(size)]
 
 	data = {
 		'types': types

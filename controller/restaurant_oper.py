@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #-*- encoding:utf-8 -*-
 
+import json
 from datetime import datetime
 
 from bottle import route, mako_template as template, redirect, request, response, get, post
@@ -33,21 +34,6 @@ def list_item():
 	start = request.params.get('start') or '0'
 	size = request.params.get('size') or '1000'
 	items = Restaurant.objects[int(start):(int(start) + int(size))]
-	data = {
-		'items': items
-	}
-	return template('views/system/item/list', data = data, site_opt = site_opt)
-
-# process search restaurants requests come from clients
-@route('/search_restaurants')
-def search_restaurants():
-	lat = request.params.get('lat')
-	lon = request.params.get('lon')
-	pn = request.params.get('pn') or '1'
-	ps = request.params.get('ps') or '1000'
-
-	start = (int(pn) - 1) * int(ps) 
-	items = Restaurant.objects[start: start + int(ps)]
 	data = {
 		'items': items
 	}

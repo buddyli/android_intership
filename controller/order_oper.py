@@ -22,15 +22,6 @@ def add_item():
 def save_order(mobile, ordered, restaurant):
 	typeObj = Order(mobile = mobile, ordered = ordered, restaurant = restaurant)
 
-@post('/client_add_order', method = 'POST')
-def client_add_item():
-	mobile = request.params.get('mobile')
-	ordered = request.params.get('ordered')
-	restaurant = request.params.get('restaurant')
-
-	save_order(mobile, ordered, restaurant)
-	return 'OK'
-
 @route('/list_order')
 def list_item():
 	start = request.params.get('start') or '0'
@@ -65,3 +56,12 @@ def to_modify_item():
 		'item': item
 	}
 	return template('views/system/order/edit', data = data, site_opt = site_opt)
+
+@post('/client_add_order', method = 'POST')
+def client_add_item():
+	mobile = request.params.get('mobile')
+	ordered = request.params.get('ordered')
+	restaurant = request.params.get('restaurant')
+
+	save_order(mobile, ordered, restaurant)
+	return 'OK'
