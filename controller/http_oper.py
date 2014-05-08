@@ -110,6 +110,7 @@ def getJsonMenus(items):
 	resList = []
 	for item in items:
 		resDict = {
+			u'id': u'%s' % item.id,
 			u'name': u'%s' % item.name,
 			u'price': u'%s' % (item.price if item.price else '--')
 		}
@@ -162,8 +163,7 @@ def getJsonOrders(items):
 			resDict = {
 				u"name": u"%s" % item.restaurant.name,
 				u"id": u"%s" % item.id,
-				u"datetime": u"%s %s" % (item.orderDate, item.orderTime),
-				u"cost": u"%s" % item.cost if item.cost else u'0'
+				u"datetime": u"%s %s" % (item.orderDate, item.orderTime)
 			}
 
 			if item.status == 1:
@@ -177,9 +177,13 @@ def getJsonOrders(items):
 			resDict['status'] = strStatus
 
 			orders = []
+			cost = int(0)
 			for menu in item.ordered:
 				orders.append(u'%s' % menu.name)
-			resDict['ordered'] = orders
+				cost += int(menu.price)
+
+			resDict[u'ordered'] = orders
+			resDict[u'cost'] = u'%d' % cost
 
 			resList.append(resDict)
 
