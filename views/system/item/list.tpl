@@ -11,6 +11,8 @@
                     <th>名称</th>
                     <th>地址</th>
                     <th>电话</th>
+                    <th>LAT</th>
+                    <th>LON</th>
                     <th>录入时间</th>
                     <th colspan="2">操作</th>
                 </tr>
@@ -26,6 +28,12 @@
                         </td>
                         <td>
                             ${item['telno'] if 'telno' in item else '--'}
+                        </td>
+                        <td>
+                            ${item['lat'] if 'lat' in item else '--'}
+                        </td>
+                        <td>
+                            ${item['lon'] if 'lon' in item else '--'}
                         </td>
                         <td>${item['addTimeStr'] if 'addTimeStr' in item else '--'}</td>
                         <td>

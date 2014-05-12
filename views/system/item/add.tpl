@@ -24,6 +24,17 @@
                     <input class="mediumfield" type="text" name="telno" id="telno" value=""/>
                     <span class="field_desc"> Optional</span>
                 </div>
+                <div class="input_field">
+                    <label for="c">LAT</label>
+                    <input class="mediumfield" type="text" name="lat" id="lat" value=""/>
+                    <span class="field_desc"> Optional</span>
+                </div>
+
+                 <div class="input_field">
+                    <label for="c">LON</label>
+                    <input class="mediumfield" type="text" name="lon" id="lon" value=""/>
+                    <span class="field_desc"> Optional</span>
+                </div>
 
                 <input class="submit" type="submit" value="提交" />
             </fieldset>

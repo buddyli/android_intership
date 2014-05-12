@@ -25,6 +25,17 @@
                     <input class="mediumfield" name="telno" type="text" value="${ item['telno'] if 'telno' in item else ''}" />
                 </div>
 
+                <div class="input_field">
+                    <label for="c">LAT</label>
+                    <input class="mediumfield" type="text" name="lat" id="lat" value="${ item['lat'] if 'lat' in item else ''}"/>
+                    <span class="field_desc"> Optional</span>
+                </div>
+
+                 <div class="input_field">
+                    <label for="c">LON</label>
+                    <input class="mediumfield" type="text" name="lon" id="lon" value="${ item['lon'] if 'lon' in item else ''}"/>
+                    <span class="field_desc"> Optional</span>
+                </div>
                 <input name="id" type="hidden" value="${ item['id'] if 'id' in item else ''}" />
                         
                 <input class="submit" type="submit" value="提交" />

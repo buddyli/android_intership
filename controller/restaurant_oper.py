@@ -24,8 +24,10 @@ def add_item():
 	name = request.params.get('name')
 	address = request.params.get('address')
 	telno = request.params.get('telno')
+	lat = request.params.get('lat')
+	lon = request.params.get('lon')
 
-	item = Restaurant(name=unicode(name, 'utf8'), address=unicode(address, 'utf8'), telno=telno)
+	item = Restaurant(name=unicode(name, 'utf8'), address=unicode(address, 'utf8'), telno=telno, lat = lat, lon = lon)
 	item.save()
 	redirect('list_item')
 
@@ -55,9 +57,11 @@ def modify_item():
 	name = request.params.get('name')
 	address = request.params.get('address')
 	telno = request.params.get('telno')
+	lat = request.params.get('lat')
+	lon = request.params.get('lon')
 
 	print 'modify item=====%s, %s, %s, %s' % (id, name, address, telno)
-	Restaurant.objects(id=id).update(set__name = unicode(name, 'utf8'), set__address = address, set__telno = unicode(telno, 'utf-8'))
+	Restaurant.objects(id=id).update(set__name = unicode(name, 'utf8'), set__address = address, set__telno = unicode(telno, 'utf-8'), set__lat = lat, set__lon = lon)
 	redirect('/list_item')
 
 @route('/to_modify_item')
