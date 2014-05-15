@@ -164,6 +164,7 @@ def getJsonOrders(items):
 			resDict = {
 				u"name": u"%s" % item.restaurant.name,
 				u"id": u"%s" % item.id,
+				u"restaurant_id": u"%s" % item.restaurant.id,
 				u"datetime": u"%s %s" % (item.orderDate, item.orderTime),
 				u"num": r"%d" %(item.num if 'num' in item else 1)
 			}
