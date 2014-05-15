@@ -11,6 +11,7 @@
                     <th>手机号码</th>
                     <th>菜单</th>
                     <th>餐馆</th>
+                    <th>用餐人数</th>
                     <th>录入时间</th>
                     <th>状态</th>
                     <th colspan='3'>操作</th>
@@ -35,6 +36,7 @@
                             '--'
                             % endif
                         </td>
+                        <td>${item['num'] if 'num' in item else '1'}</td>
                         <td>${item['addTimeStr'] if 'addTimeStr' in item else '--'}</td>
                          <td>
                             % if item.status == 0:
