@@ -169,6 +169,7 @@ def getJsonOrders(items):
 				u"num": r"%d" %(item.num if 'num' in item else 1)
 			}
 
+
 			if item.status == 1:
 				strStatus = u'已预订'
 			elif item.status == 2:
