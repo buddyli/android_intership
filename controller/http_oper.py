@@ -157,6 +157,7 @@ def user_order_history():
 	return template('views/system/user/user_book_history', data = data)
 
 #模板中组装json实在是不方便，这里直接组装了。。。
+#返回的菜单列表中添加餐馆ID字段
 def getJsonOrders(items):
 	resList = []
 	if items != None and len(items) > 0:
@@ -168,7 +169,6 @@ def getJsonOrders(items):
 				u"datetime": u"%s %s" % (item.orderDate, item.orderTime),
 				u"num": r"%d" %(item.num if 'num' in item else 1)
 			}
-
 
 			if item.status == 1:
 				strStatus = u'已预订'
