@@ -97,10 +97,11 @@ def restaurant_order():
 	foods = request.params.get('foods')
 	date = request.params.get('date')
 	time = request.params.get('time')
+	num = request.params.get('num') or '1'
 
 	foodsList = [item for item in foods.split(',')]
 
-	order = Order(mobile=mobile, restaurant=id, ordered=foodsList, orderDate=date, orderTime=time)
+	order = Order(mobile=mobile, restaurant=id, ordered=foodsList, num=int(num), orderDate=date, orderTime=time)
 	order.save()
 
 	return template('views/system/item/order')
@@ -163,7 +164,8 @@ def getJsonOrders(items):
 			resDict = {
 				u"name": u"%s" % item.restaurant.name,
 				u"id": u"%s" % item.id,
-				u"datetime": u"%s %s" % (item.orderDate, item.orderTime)
+				u"datetime": u"%s %s" % (item.orderDate, item.orderTime),
+				u"num": r"%d" %(item.num if 'num' in item else 1)
 			}
 
 			if item.status == 1:

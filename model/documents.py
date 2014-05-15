@@ -45,3 +45,4 @@ class Order(Document):
 	status = IntField(required=False, default=0)
 	addTime = DateTimeField(default=datetime.now())
 	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))
+	num = IntField(max_length=5, required=False, default=1)#用餐人数
