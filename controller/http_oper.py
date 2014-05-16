@@ -25,7 +25,7 @@ def getJsonRestaurants(items):
 			u"lat": u"%s" % item.lat if item.lat else u'',
 			u"distance": u"" ,
 			u"m_star": u"",
-            u"price": u""
+            u"price": u"%s" % item.price if item.price else u''
 		}
 		resList.append(resDict)
 

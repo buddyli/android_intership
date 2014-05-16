@@ -18,6 +18,7 @@ class Restaurant(Document):
 	addTimeStr = StringField(default=datetime.now().strftime(DATE_FORMAT))
 	lat = StringField(max_length=50, required=False)
 	lon = StringField(max_length=50, required=False)
+	price = StringField(max_length=10, required=False)
 	# menu = ListField(ReferenceField(Menu))
 
 # 菜品文档--一个菜品对应一个餐馆
