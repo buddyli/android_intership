@@ -99,7 +99,10 @@ def restaurant_order():
 	time = request.params.get('time')
 	num = request.params.get('num') or '1'
 
-	foodsList = [item for item in foods.split(',')]
+	if foods == None or len(foods) <=0:
+		foodsList = []
+	else:
+		foodsList = [item for item in foods.split(',')]
 
 	order = Order(mobile=mobile, restaurant=id, ordered=foodsList, num=int(num), orderDate=date, orderTime=time)
 	order.save()
