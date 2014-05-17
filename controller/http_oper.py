@@ -17,14 +17,14 @@ def getJsonRestaurants(items):
 		resDict = {
 			u"name": u"%s" % item.name,
 			u"id": u"%s" % item.id,
-			u"trade_name": u"",
+			u"trade_name": u"%s" % item.tradeName if item.tradeName else u'其它',
 			u"telno": u"%s" % item.telno if item.telno else u'',
 			u"address": u"%s" % item.address if item.address else u'',
 			u"landmark": u"",
 			u"lon": u"%s" % item.lon if item.lon else u'',
 			u"lat": u"%s" % item.lat if item.lat else u'',
 			u"distance": u"" ,
-			u"m_star": u"",
+			u"m_star": u"%d" % item.mStar if item.mStar else 1,
             u"price": u"%s" % item.price if item.price else u''
 		}
 		resList.append(resDict)
@@ -37,14 +37,14 @@ def getJsonDetail(item):
 		resDict = {
 				u"name": u"%s" % item.name,
 				u"id": u"%s" % item.id,
-				u"trade_name": u"",
+				u"trade_name": u"%s" % item.tradeName if item.tradeName else u'其它',
 				u"telno": u"%s" % item.telno if item.telno else u'',
 				u"address": u"%s" % item.address if item.address else u'',
 				u"landmark": u"",
 				u"lon": u"%s" % item.lon if item.lon else u'',
 				u"lat": u"%s" % item.lat if item.lat else u'',
 				u"distance": u"" ,
-				u"m_star": u"",
+				u"m_star": u"%d" % item.mStar if item.mStar else 1,
 	            u"price": u""
 			}
 	else:

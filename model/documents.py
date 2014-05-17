@@ -19,6 +19,8 @@ class Restaurant(Document):
 	lat = StringField(max_length=50, required=False)
 	lon = StringField(max_length=50, required=False)
 	price = StringField(max_length=10, required=False)
+	tradeName = StringField(max_length=20, required=False, default=u'川菜')
+	mStar = IntField(required=False, default=5)
 	# menu = ListField(ReferenceField(Menu))
 
 # 菜品文档--一个菜品对应一个餐馆
