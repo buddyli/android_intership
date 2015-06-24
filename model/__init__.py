@@ -10,4 +10,7 @@
 
 from mongoengine import *
 from documents import *
-connect('android_intership', host='172.16.22.182', port=27017)
+#from pymongo.read_preferences import ReadPreference
+
+#connect('android_intership', host='localhost', port=27017, read_preference=ReadPreference.PRIMARY)
+connect('android_intership', host='localhost', port=27017)
