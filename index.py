@@ -7,7 +7,6 @@ BASE_PATH = os.path.dirname(__file__)
 #LIBS_PATH = os.path.join(BASE_PATH, 'libs')
 ##设置环境变量
 #sys.path.append(LIBS_PATH)
-sys.path.insert(0, os.path.join(BASE_PATH, 'lib'))
 sys.path.insert(0, os.path.join(BASE_PATH, 'libs'))
 sys.path.append(os.path.join(BASE_PATH, 'views'))
 
