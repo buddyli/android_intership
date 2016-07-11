@@ -24,7 +24,7 @@ from setting import *
 
 # 自定义库
 import controller
-app = application = bottle.default_app()
+# app = application = bottle.default_app()
 
 bottle.debug(True)
 
